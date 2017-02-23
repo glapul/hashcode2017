@@ -1,11 +1,22 @@
 #include "output.h"
-
+#include "info.h"
 Output::Output() {
     videosInCaches.resize(nCaches);
 }
 
-int getScore() {
-    return 0;
+int Output::getScore() {
+  int total = 0;
+  int req_cnt = 0;
+  for(const auto& rd : requestDescriptions) {
+    int latency = endpoints[rd.endpointId].latencyToBase;
+    for(auto cache : endpoints[rd.endpointId].cachesConnectedToThisEndpoint){
+      if(videosInCaches[cache.cacheId].count(rd.videoId))
+        latency = min(latency, cache.cacheLatency);
+    }
+    total += rd.numberOfRequests * (latency - endpoints[rd.endpointId].latencyToBase);
+    req_cnt += rd.numberOfRequests;
+  }
+  return 1000 * total / req_cnt;
 }
 
 bool Output::addVideoToCache(int videoId, int cacheId) {
