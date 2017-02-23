@@ -1,2 +1,3 @@
 #!/bin/bash
-for i in data/*.in; do echo $i; ./binary < $i > ${i/\.in/\.out}; done
+mkdir -p outputs
+for i in data/*.in; do echo $i; tmpp=`echo $i | sed "s/\.in/\.out/g" | sed "s/data/outputs/g"`; ./binary < $i > $tmpp; done
