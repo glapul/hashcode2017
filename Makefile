@@ -8,6 +8,8 @@ run:
 
 save:
 	mkdir -p backup
-	zip backup/`date +%Y-%m-%d.%H:%M:%S`.zip *.cpp *.h
+	mkdir -p outputs
+	zip outputs/recent_source.zip  *.cpp *.h
+	cp outputs/recent_source.zip backup/`date +%Y-%m-%d.%H:%M:%S`.zip
 
 all: build run save
