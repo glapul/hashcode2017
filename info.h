@@ -3,25 +3,29 @@
 #include<bits/stdc++.h>
 #define int int64_t
 using namespace std;
-int nVideos;
-int nEndpoints;
-int nRequestsDescriptions;
-int nCaches;
-int nCacheCapacity;
+extern int nVideos;
+extern int nEndpoints;
+extern int nRequestsDescriptions;
+extern int nCaches;
+extern int nCacheCapacity;
 
-vector<int> videoSizes;
+extern vector<int> videoSizes;
 
 struct Endpoint {
 	int latencyToBase;
 	vector<pair<int,int>> cachesConnectedToThisEndpoint; // id, latency
 };
+#define cacheId first
+#define cacheLatency second
 
-vector<Endpoint> endpoints;
+extern vector<Endpoint> endpoints;
 struct RequestDescription {
 	int videoId;
 	int endpointId;
 	int numberOfRequests;
 };
 
-vector<RequestDescription> requestDescriptions;
+extern vector<RequestDescription> requestDescriptions;
+
+void readInput();
 #endif
