@@ -24,8 +24,8 @@ bool Output::addVideoToCache(int videoId, int cacheId) {
     assert (videoId <= nVideos && videoId >= 0);
     assert (cacheId <= nCaches && cacheId >= 0);
     if (videosInCaches[cacheId].count(videoId)) {
-        cerr << "Adding videi " << videoId << " to cache " << cacheId << " again\n";
-        return true;
+        //cerr << "Adding videi " << videoId << " to cache " << cacheId << " again\n";
+        return false;
     }
     if (capacitiesTaken[cacheId] + videoSizes[videoId] <= nCacheCapacity) {
         capacitiesTaken[cacheId] += videoSizes[videoId];
