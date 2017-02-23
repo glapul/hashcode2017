@@ -13,7 +13,7 @@ int Output::getScore() {
       if(videosInCaches[cache.cacheId].count(rd.videoId))
         latency = min(latency, cache.cacheLatency);
     }
-    total += rd.numberOfRequests * (latency - endpoints[rd.endpointId].latencyToBase);
+    total += rd.numberOfRequests * (endpoints[rd.endpointId].latencyToBase - latency);
     req_cnt += rd.numberOfRequests;
   }
   return 1000 * total / req_cnt;
