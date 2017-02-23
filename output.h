@@ -2,9 +2,13 @@
 #define OUTPUT_H
 #include "info.h"
 
-bool addVideoToCache(int videoId, int cacheId);
-bool removeVideoFromCache(int videoId, int cacheId);
-void clearOutput();
-string createOutput();
-void printOutput();
+struct Output {
+    Output();
+    vector<unordered_set<int>> videosInCaches;
+    int getScore();
+    bool addVideoToCache(int videoId, int cacheId);
+    bool removeVideoFromCache(int videoId, int cacheId);
+    string createOutput();
+    void printOutput();
+};
 #endif
