@@ -57,9 +57,9 @@ string Output::createOutput() {
     buff << n << endl;
     for (int i = 0; i < videosInCaches.size(); i++) {
         if (videosInCaches[i].empty()) continue;
-        buff << i << " ";
+        buff << i;
         for (auto j : videosInCaches[i])
-            buff << j << " ";
+            buff << " " << j;
         buff << endl;
     }
     return buff.str();
