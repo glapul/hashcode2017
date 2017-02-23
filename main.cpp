@@ -3,5 +3,6 @@
 
 int32_t main() {
 	readInput();
-    printOutput();
+	Output o;
+	o.printOutput();
 }

@@ -1,7 +1,7 @@
 .PHONY : build save run all
 
 build:
-	g++-6 main.cpp info.cpp -o binary
+	g++-6 main.cpp info.cpp output.cpp -o binary
 
 run:
 	./run.sh
