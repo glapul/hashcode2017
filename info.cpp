@@ -25,7 +25,9 @@ void readInput() {
             cin >> endpoints[i].cachesConnectedToThisEndpoint[j].cacheId;
             cin >> endpoints[i].cachesConnectedToThisEndpoint[j].cacheLatency;
         }
+        sort(endpoints[i].cachesConnectedToThisEndpoint.begin(), endpoints[i].cachesConnectedToThisEndpoint.end(), [&](const pair<int,int>& a, const pair<int,int>& b) {return a.cacheLatency < b.cacheLatency;});
     }
+    cerr << "reading endpoints done" << endl;
 
 
     map<pair<int,int>, int> tmp;
@@ -39,5 +41,6 @@ void readInput() {
     for (auto i : tmp) {
         requestDescriptions.emplace_back(RequestDescription{i.first.first, i.first.second, i.second});
     }
+    sort(requestDescriptions.begin(), requestDescriptions.end(), [&](const RequestDescription& a, const RequestDescription& b) {return a.numberOfRequests > b.numberOfRequests;});
 }
 
