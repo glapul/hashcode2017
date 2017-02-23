@@ -5,6 +5,7 @@
 struct Output {
     Output();
     vector<unordered_set<int>> videosInCaches;
+    vector<int> capacitiesTaken;
     int getScore();
     bool addVideoToCache(int videoId, int cacheId);
     bool removeVideoFromCache(int videoId, int cacheId);

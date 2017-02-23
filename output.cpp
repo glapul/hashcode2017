@@ -2,6 +2,7 @@
 #include "info.h"
 Output::Output() {
     videosInCaches.resize(nCaches);
+    capacitiesTaken.resize(nCaches);
 }
 
 int Output::getScore() {
@@ -26,11 +27,8 @@ bool Output::addVideoToCache(int videoId, int cacheId) {
         cerr << "Adding videi " << videoId << " to cache " << cacheId << " again\n";
         return true;
     }
-	int usedCapacity = 0;
-	for (auto i : videosInCaches[cacheId])
-        usedCapacity += videoSizes[i];
-    usedCapacity += videoSizes[videoId];
-    if (usedCapacity <= nCacheCapacity) {
+    if (capacitiesTaken[cacheId] + videoSizes[videoId] <= nCacheCapacity) {
+        capacitiesTaken[cacheId] += videoSizes[videoId];
         videosInCaches[cacheId].insert(videoId);
         return true;
     }
@@ -46,6 +44,7 @@ bool Output::removeVideoFromCache(int videoId, int cacheId) {
         return false;
     }
     videosInCaches[cacheId].erase(videoId);
+    capacitiesTaken[cacheId] -= videoSizes[videoId];
     return true;
 }
 
