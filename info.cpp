@@ -26,5 +26,18 @@ void readInput() {
             cin >> endpoints[i].cachesConnectedToThisEndpoint[j].cacheLatency;
         }
     }
+
+
+    map<pair<int,int>, int> tmp;
+    for (int i = 0; i < nRequestsDescriptions; i++) {
+        int a,b,c;
+        cin >> a >> b >> c;
+        auto pr = make_pair(a, b);
+        tmp[pr] += c;
+    }
+    nRequestsDescriptions = tmp.size();
+    for (auto i : tmp) {
+        requestDescriptions.emplace_back(RequestDescription{i.first.first, i.first.second, i.second});
+    }
 }
 
