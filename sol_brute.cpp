@@ -4,7 +4,9 @@
 
 double scoreForVideoInCache(int videoId, int cacheId, Output &output) {
     int initScore = output.getScore();
-    output.addVideoToCache(videoId, cacheId);
+    if (!output.addVideoToCache(videoId, cacheId)) {
+        return 0.0;
+    }
     
     int newScore = output.getScore();
     output.removeVideoFromCache(videoId, cacheId);
