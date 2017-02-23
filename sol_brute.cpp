@@ -1,3 +1,5 @@
+#include "info.h"
+#include "output.h"
 #include "sol_brute.h"
 
 double scoreForVideoInCache(int videoId, int cacheId, Output &output) {
