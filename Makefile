@@ -1,10 +1,10 @@
 .PHONY : build save run all
 
 build:
-	g++ -std=c++11 main.cpp -o main
+	g++ -std=c++11 main.cpp -o binary
 
 run:
-	echo "NOT IMPLEMENTED"
+	./run.sh
 
 save:
 	mkdir -p backup
